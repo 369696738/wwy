@@ -10,7 +10,7 @@ on:
     branches: 
       - master
   schedule:
-    - cron: "1 16 * * *"
+    - cron: "16 16 * * *" # 北京时间0:16触发
   watch:
     types: [started]
    
@@ -20,15 +20,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Set up Python #安装python
+    - name: Set up Python # 安装python
       uses: actions/setup-python@v5
       with:
         python-version: '3.8'
-    - name: Set up Node.js #安装Node.js
+    - name: Set up Node.js # 安装Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-    - name: Install requirements #安装轮子
+    - name: Install requirements # 安装轮子
       run: |
         pip install -r requirements.txt
     - name: Run script
