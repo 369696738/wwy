@@ -10,7 +10,7 @@ on:
     branches: 
       - master
   schedule:
-    - cron: "26 16 * * *" # 北京时间0:16触发
+    - cron: "16 16 * * *" # 北京时间0:16触发
   watch:
     types: [started]
    
@@ -31,6 +31,8 @@ jobs:
     - name: Install requirements # 安装轮子
       run: |
         pip install -r requirements.txt
+    - name: Print current time # 输出当前时间，帮助调试
+      run: date
     - name: Run script
       run: |
         python3 main.py "${{ secrets.cookie }}" "${{ secrets.teleid }}" "${{ secrets.teletoken }}" "${{ secrets.SCKEY }}" "${{ secrets.QQKEY }}" "${{ secrets.PPKEY }}"
